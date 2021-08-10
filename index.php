@@ -2,7 +2,23 @@
 <head>
 <title>Bond Web Service Demo</title>
 <style>
-body {font-family:georgia;}
+	body {font-family:georgia;}
+
+	.film{
+		border:1px solid #E77DC2;
+		border-radius: 5px;
+		padding: 5px;
+		margin-bottom:5px;
+		position:relative;	
+	}
+
+	.pic{
+		position:absolute;
+		right:10px;
+		top:10px;
+	}
+
+
 </style>
 <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
 
@@ -20,7 +36,13 @@ $(document).ready(function() {
 function loadAJAX(cat)
 {
 	//AJAX connection will go here
-    alert('cat is: ' + cat);
+    //alert('cat is: ' + cat);
+	$.ajax({
+		type:"GET",
+		dataType: "json",
+		url: "api.php?cat=" + cat,
+		success: bondJSON
+	})
 }
     
 function toConsole(data)
