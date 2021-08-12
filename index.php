@@ -34,17 +34,19 @@ $(document).ready(function() {
 
 function loadAJAX(cat)
 {
-    //AJAX connection will go here
-    //alert('cat is: ' + cat);
-
-    $.ajax({
-        type: "GET", 
-        dataType: "json", 
-        url: "api.php?cat=" + cat,
-        success: bondJSON
-
-    });
+   $.ajax({
+       type: "GET",
+       dataType: "json",
+       url: "api.php?cat=" + cat,
+       success: bondJSON,
+       error: function(xhr, status, error){
+        let errorMessage = xhr.status + ': ' + xhr.statusText
+        alert('Error - ' + errorMessage);
+    }
+ 
+   });
 }
+
     
 function toConsole(data)
 {//return data to console for JSON examination
@@ -62,6 +64,7 @@ function bondJSON(data){
     $('#films').html('');
 
     //loop through films and add template
+    /*
     $.each(data.films,function(i,item){
         let myFilm = bondTemplate(item);
 
@@ -69,16 +72,16 @@ function bondJSON(data){
 
 
     });
+    */
 
     // this loads data on page but bunched up
     //$("#output").text(JSON.stringify(data));
 
-    /*
+    
     let myData = JSON.stringify(data,null,4);
-
     myData = "<pre>" + myData + "</pre>";
     $("#output").html(myData);
-    */
+    
 }
 
 function bondTemplate(film){
@@ -107,8 +110,8 @@ function bondTemplate(film){
 </head>
     <body>
     <h1>Video Game Web Service</h1>
-        <a href="year" class="category">Bond Films By Year</a><br />
-        <a href="box" class="category">Bond Films By International Box Office Totals</a>
+        <a href="year" class="category">Video Games By Year</a><br />
+        <a href="title" class="category">Bond Films By Title</a>
         <h3 id="filmtitle">Title Will Go Here</h3>
         <div id="films">
             <!--
