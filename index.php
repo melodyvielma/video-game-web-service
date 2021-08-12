@@ -57,6 +57,8 @@ function bondJSON(data){
     //here is how I see data returned via the console
     console.log(data);
 
+    
+
     //identifies the type of data returned
     $('#filmtitle').html(data.title);
 
@@ -64,15 +66,13 @@ function bondJSON(data){
     $('#films').html('');
 
     //loop through films and add template
-    /*
-    $.each(data.films,function(i,item){
+    
+    $.each(data.games,function(i,item){
         let myFilm = bondTemplate(item);
 
         $('<div></div>').html(myFilm).appendTo('#films');
-
-
     });
-    */
+
 
     // this loads data on page but bunched up
     //$("#output").text(JSON.stringify(data));
@@ -84,22 +84,17 @@ function bondJSON(data){
     
 }
 
-function bondTemplate(film){
+function bondTemplate(game){
     return `
         <div class = "film">
-            <b>Film: </b>${film.Film}<br>
-            <b>Title: </b>${film.Title}<br>
-            <b>Year: </b>${film.Year}<br>
-            <b>Director: </b>${film.Director}<br>
-            <b>Producers: </b>${film.Producers}<br>
-            <b>Writers: </b>${film.Writers}<br>
-            <b>Composer: </b>${film.Composer}<br>
-            <b>Bond: </b>${film.Bond}<br>
-            <b>Budget: </b>${film.Budget}<br>
-            <b>Box Office: </b>${film.BoxOffice}<br>
-            <div class = "pic"><img src ="thumbnails/${film.Image}"></div>
+            <b>Title: </b>${game.Title}<br>
+            <b>Genre: </b>${game.Genre}<br>
+            <b>Company: </b>${game.Company}<br>
+            <b>Year: </b>${game.Year}<br>
+            <b>Rating: </b>${game.Rating}<br>
+            <div class = "pic"><img src ="thumbnails/${game.Image}"></div>
         </div>
-    
+
     `;
 
 }
