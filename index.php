@@ -53,7 +53,7 @@ function toConsole(data)
     console.log(data); //to view,use Chrome console, ctrl + shift + j
 }
 
-function bondJSON(data){
+function gameJSON(data){
     //here is how I see data returned via the console
     console.log(data);
 
@@ -68,7 +68,7 @@ function bondJSON(data){
     //loop through films and add template
     
     $.each(data.games,function(i,item){
-        let myFilm = bondTemplate(item);
+        let myFilm = gameTemplate(item);
 
         $('<div></div>').html(myFilm).appendTo('#films');
     });
@@ -84,7 +84,7 @@ function bondJSON(data){
     
 }
 
-function bondTemplate(game){
+function gameTemplate(game){
     return `
         <div class = "film">
             <b>Title: </b>${game.Title}<br>
@@ -92,7 +92,7 @@ function bondTemplate(game){
             <b>Company: </b>${game.Company}<br>
             <b>Year: </b>${game.Year}<br>
             <b>Rating: </b>${game.Rating}<br>
-            <div class = "pic"><img src ="thumbnails/${game.Image}"></div>
+            <div class = "pic"><img src ="images/${game.Image}"></div>
         </div>
 
     `;
@@ -106,7 +106,7 @@ function bondTemplate(game){
     <body>
     <h1>Video Game Web Service</h1>
         <a href="year" class="category">Video Games By Year</a><br />
-        <a href="title" class="category">Bond Films By Title</a>
+        <a href="title" class="category">Video Games By Title</a>
         <h3 id="filmtitle">Title Will Go Here</h3>
         <div id="films">
             <!--
