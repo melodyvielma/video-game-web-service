@@ -53,7 +53,7 @@ function toConsole(data)
     console.log(data); //to view,use Chrome console, ctrl + shift + j
 }
 
-function gameJSON(data){
+function bondJSON(data){
     //here is how I see data returned via the console
     console.log(data);
 
@@ -68,7 +68,7 @@ function gameJSON(data){
     //loop through films and add template
     
     $.each(data.games,function(i,item){
-        let myFilm = gameTemplate(item);
+        let myFilm = bondTemplate(item);
 
         $('<div></div>').html(myFilm).appendTo('#films');
     });
@@ -84,7 +84,7 @@ function gameJSON(data){
     
 }
 
-function gameTemplate(game){
+function bondTemplate(game){
     return `
         <div class = "film">
             <b>Title: </b>${game.Title}<br>
